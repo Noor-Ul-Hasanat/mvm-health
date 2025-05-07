@@ -253,6 +253,34 @@ const Home = () => {
                         <option value="Unknown">Unknown</option>
                       </select>
                     </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Plan Status</label>
+                      <select
+                        name="fundingType"
+                        value={newPatient.status}
+                        onChange={handleInputChange}
+                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                        required
+                      >
+                        <option value="">Select</option>
+                        <option value="Self Funded">Active</option>
+                        <option value="Fully Insured">Terminated</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Any Secondry Payer?</label>
+                      <select
+                        name="fundingType"
+                        value={newPatient.secondaryPayer}
+                        onChange={handleInputChange}
+                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                        required
+                      >
+                        <option value="">Select</option>
+                        <option value="Self Funded">Yes</option>
+                        <option value="Fully Insured">NO</option>
+                      </select>
+                    </div>
                   </div>
 
                   <div className="md:col-span-2 flex justify-end">

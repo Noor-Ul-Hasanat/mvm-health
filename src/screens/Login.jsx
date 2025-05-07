@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import picture from '../assets/Doctor.png';
+import { NavLink } from 'react-router-dom';
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -55,12 +56,14 @@ const Login = () => {
               </button>
             </div>
 
-            <button
+           <NavLink to="/home">
+           <button
               type="submit"
               className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-300 shadow-md"
             >
               Sign In
             </button>
+            </NavLink>
           </form>
 
           <div className="mt-6 text-center">
