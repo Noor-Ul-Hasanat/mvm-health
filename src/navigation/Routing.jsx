@@ -1,20 +1,27 @@
-import React from 'react'
-import { createHashRouter, RouterProvider } from 'react-router-dom';
+import React from 'react';
+import { createBrowserRouter,  RouterProvider } from 'react-router-dom';
 import Login from '../screens/Login';
 import Home from '../screens/Home';
-const router = createHashRouter([{
-    path: '/',
-    element: <Login />,   
-    },
-    {
-        path: '/home',
-        element: <Home/>,
-    },
-]);
-const Routing =()=> {
-  return (
-    <RouterProvider router={router} />
-  )
-}
+import ProtectedRoute from './ProtectedRoute'; 
 
-export default Routing
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Login />,
+  },
+  {
+    path: '/home',
+    element: <ProtectedRoute/>,
+    children: [
+      {
+    index: true,
+       element: <Home />}]
+    
+  },
+]);
+
+const Routing = () => {
+  return <RouterProvider router={router} />;
+};
+
+export default Routing;

@@ -1,11 +1,35 @@
 import React, { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import picture from '../assets/Doctor.png';
-import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { AuthActions } from '../Redux/Slices/AuthSlice';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const Login = () => {
-  const [showPassword, setShowPassword] = useState(false);
+ 
+  const navigate = useNavigate();
+   const dispatch = useDispatch();
+  // const isAuth = useSelector((state) => state.auth.isAuthenticated);
+  const dummyToken = "abc123.jwt.token";
+
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (email === '1' && password === '12') {
+    dispatch(AuthActions.loginSuccess({email,password, token: dummyToken}));
+    navigate('/home')
+    }else {
+      alert('Invalid credentials!');
+    }
+  };
+
+
+ 
+  const [showPassword, setShowPassword] = useState(false);
+ 
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -21,7 +45,7 @@ const Login = () => {
             <p className="text-gray-500 mt-2">Enter your credentials to continue</p>
           </div>
 
-          <form className="space-y-6 text-left">
+          <form className="space-y-6 text-left" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1">
                 Username
@@ -30,6 +54,7 @@ const Login = () => {
                 id="username"
                 type="text"
                 placeholder="Enter your username"
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
               />
             </div>
@@ -41,7 +66,7 @@ const Login = () => {
               <input
                 id="password"
                 type={showPassword ? "text" : "password"}
-                value={password}
+              
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all pr-10"
@@ -56,14 +81,14 @@ const Login = () => {
               </button>
             </div>
 
-           <NavLink to="/home">
-           <button
-              type="submit"
+           
+       
+         <button
+           type='submit'
               className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-300 shadow-md"
             >
-              Sign In
+              {/* {isAuth ? "Logged In" : "Login"} */}login
             </button>
-            </NavLink>
           </form>
 
           <div className="mt-6 text-center">
