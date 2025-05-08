@@ -37,7 +37,7 @@ const Login = () => {
 
   return (
     
-      <div className="bg-white rounded-xl shadow-xl overflow-hidden w-ful flex">
+      <div className="bg-[#f0f8fa] rounded-xl shadow-xl overflow-hidden w-full flex">
         {/* Left div - Form */}
         <div className="w-full md:w-1/3 p-8">
           <div className="text-center mb-8">
